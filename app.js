@@ -16,8 +16,8 @@ app.post('/api/send', (req, res, next) => {
     console.log(req.body)
 
     const mailjet = Mailjet.apiConnect(
-        "3f3dae485ab2a5556d23c2afce4d39dd",
-        "339fc46f8ceb6810376dc80a8cf533cd",
+        "*",
+        "*",
     );
     
     const request = mailjet
