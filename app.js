@@ -13,7 +13,7 @@ app.use((req, res, next) => {
 
 app.post('/api/send', (req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    console.log(req.body)
+    //console.log(req.body)
 
     const mailjet = Mailjet.apiConnect(
         "*",
@@ -27,16 +27,19 @@ app.post('/api/send', (req, res, next) => {
                 {
                   From: {
                     Email: "contact@maison-des-experts-immobiliers.fr",
-                    Name: "Mailjet Pilot"
+                    Name: "La maison des experts"
                   },
                   To: [
                     {
                       Email: "contact@wiwaks.com",
-                      Name: "passenger 1"
+                      Name: "La maison des experts"
+                    },
+                    {
+                      Email: req.body.emailClient,
                     }
                   ],
-                  Subject: "Your email flight plan!",
-                  TextPart: "Dear passenger 1, welcome to Mailjet! May the delivery force be with you!",
+                  Subject: "Formulaire de demande de diagnostique Maison des experts",
+                  //TextPart: "Dear passenger 1, welcome to Mailjet! May the delivery force be with you!",
                   HTMLPart: req.body.body
                 }
               ]
